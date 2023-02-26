@@ -2,10 +2,13 @@
 package tareas;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+
 public class Listado {
 	
 	private ArrayList <Alumno> datos; 
-	 
+	tarea2 men = new tarea2();
+	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void creararray() {
 		 datos = new ArrayList();
@@ -25,9 +28,20 @@ public class Listado {
 		String carnet=entrada.next();
 		System.out.println("Ingrese el genero: ");
 		String genero=entrada.next();
+		Alumno existe = buscar(datos, carnet);
+	    if (existe != null) {
+	        System.out.println(existe.toString());
+	    }
 		Alumno alumno = new Alumno(nombre,edad,carnet,genero);
 		datos.add(alumno);
-		System.out.println("Agregado con exito");
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 	
 	public void devolverinformacion() {
@@ -39,6 +53,25 @@ public class Listado {
 		
 		
 	}
+	
+	
+	
+	public static Alumno buscar(ArrayList<Alumno> datos, String carnet) {
+	    for (int i = 0; i < datos.size(); i++) {
+	        if (carnet.equals(datos.get(i).getCarnet())) {
+	            System.out.println("Carnet repetido, eliminando alumno anterior");
+	            Alumno alumno = datos.get(i);
+	            datos.remove(i);
+	            return alumno;
+	        }
+	    }
+	    return null;
+	}
+
+	
+	
+
+	
 
 	
 	
